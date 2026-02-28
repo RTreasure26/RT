@@ -90,7 +90,7 @@ const SCENARIOS = [
       <a href="${zipLink}" target="_blank">[Download ZIP File]</a>. 
       But be careful – the file has a password. The first step to find it is to look closely at the attached image. 
       The suspicious IP in the image will show you the next step. 
-      This GitHub link <a href="https://rtreasure26.github.io/Flag-Discovery/" target="_blank">GitHub Repository</a> 
+      This GitHub link <a href="https://github.com/RTreasure26/Flag-Discovery" target="_blank">GitHub Repository</a> 
       has files that will help you follow the right path and finish the challenge. 
       Make sure to use a program that can open password-protected ZIP files, like <strong>WinRAR</strong>.
     `,
