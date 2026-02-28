@@ -5,7 +5,7 @@
 // ==========================================
 // GAME DATA
 // ==========================================
-
+ document.title = "Ramadan Treasure";
 const STAGE_KEYS = {
   1: '04c24a00c8e5cee2bed6f9ac6ae4e1e9a5bdb6d4e980069fbfd2d293a5873d41',
   2: 'e91d9bd804d67de71a382b53a055a5ddf524f79614d7051d47f47acfe1f1ee0d',
