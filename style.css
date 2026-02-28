@@ -1,0 +1,1348 @@
+/* ========================================
+   RAMADAN CODE QUEST - STYLES
+   ======================================== */
+
+/* ---------- CSS Variables ---------- */
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+:root {
+  --bg-primary: #0b1023;
+  --bg-secondary: #131a35;
+  --bg-card: #1a2240;
+  --gold: #d4a33e;
+  --gold-light: #f0c96e;
+  --gold-dark: #a07820;
+  --cream: #faf3e0;
+  --text-primary: #f0ebe0;
+  --text-secondary: #a0a8c4;
+  --accent-teal: #2ec4a0;
+  --accent-red: #e54b4b;
+  --accent-green: #4ecb71;
+  --shadow-glow: 0 0 30px rgba(212, 163, 62, 0.25);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  outline: none;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------- Screens ---------- */
+.screen {
+  display: none;
+  min-height: 100dvh;
+  padding: 20px;
+  position: relative;
+  animation: fadeIn 0.4s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- HOME SCREEN ---------- */
+#home-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-banner {
+  width: 280px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 2px solid var(--gold-dark);
+  box-shadow: var(--shadow-glow);
+  margin-bottom: 8px;
+}
+
+.crescent-moon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow:
+    inset -18px 0 0 0 var(--gold),
+    0 0 20px rgba(212, 163, 62, 0.4);
+  margin-bottom: 4px;
+}
+
+.game-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 2px 12px rgba(212, 163, 62, 0.3);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.game-subtitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.game-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* ---------- Decorations ---------- */
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.lantern {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--gold-dark) 0%, var(--gold) 40%, var(--gold-light) 100%);
+  border-radius: 6px 6px 50% 50%;
+  opacity: 0.5;
+  animation: sway 4s ease-in-out infinite;
+}
+
+.lantern::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 12px;
+  background: var(--gold-dark);
+}
+
+.lantern::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(212, 163, 62, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.lantern-1 { top: 0; left: 10%; animation-delay: 0s; }
+.lantern-2 { top: 0; left: 50%; animation-delay: 1.5s; }
+.lantern-3 { top: 0; right: 10%; animation-delay: 0.8s; }
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.geometric-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px,
+    var(--gold) 20px,
+    transparent 20px,
+    transparent 24px
+  );
+  opacity: 0.4;
+  z-index: 3;
+}
+
+/* ---------- Stars Background ---------- */
+.stars-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.stars-bg::before,
+.stars-bg::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow:
+    30px 40px 0 0 rgba(240, 235, 224, 0.6),
+    80px 80px 0 0 rgba(240, 235, 224, 0.4),
+    150px 30px 0 0 rgba(240, 235, 224, 0.7),
+    200px 90px 0 0 rgba(240, 235, 224, 0.3),
+    260px 50px 0 0 rgba(240, 235, 224, 0.5),
+    320px 20px 0 0 rgba(240, 235, 224, 0.6),
+    50px 160px 0 0 rgba(240, 235, 224, 0.4),
+    120px 200px 0 0 rgba(240, 235, 224, 0.5),
+    200px 170px 0 0 rgba(240, 235, 224, 0.3),
+    280px 180px 0 0 rgba(240, 235, 224, 0.6);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars-bg::after {
+  left: 50px;
+  top: 50px;
+  box-shadow:
+    40px 60px 0 0 rgba(240, 235, 224, 0.5),
+    100px 120px 0 0 rgba(240, 235, 224, 0.3),
+    180px 50px 0 0 rgba(240, 235, 224, 0.6),
+    240px 140px 0 0 rgba(240, 235, 224, 0.4),
+    300px 70px 0 0 rgba(240, 235, 224, 0.5),
+    60px 250px 0 0 rgba(240, 235, 224, 0.4),
+    160px 280px 0 0 rgba(240, 235, 224, 0.3);
+  animation-delay: 2s;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 163, 62, 0.4);
+}
+
+.btn-glow {
+  box-shadow: 0 0 20px rgba(212, 163, 62, 0.3);
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 163, 62, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(212, 163, 62, 0.5); }
+}
+
+.btn-unlock {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-xs);
+}
+
+.btn-unlock:hover {
+  background: #3ad4b0;
+}
+
+.btn-play {
+  background: var(--gold);
+  color: var(--bg-primary);
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-xs);
+  width: 100%;
+}
+
+.btn-play:hover {
+  background: var(--gold-light);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.back-btn:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.icon-btn:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+/* ---------- Screen Header ---------- */
+.screen-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(212, 163, 62, 0.15);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.screen-header h2 {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.stage-progress {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  background: var(--bg-card);
+  padding: 6px 14px;
+  border-radius: var(--radius-xs);
+}
+
+.stage-instruction {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ---------- MAP SCREEN ---------- */
+.map-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-card);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ---------- Stage Cards ---------- */
+.stage-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.stage-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid rgba(212, 163, 62, 0.1);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.stage-card.unlocked::before {
+  opacity: 1;
+}
+
+.stage-card.completed {
+  border-color: var(--accent-green);
+}
+
+.stage-card.completed::before {
+  background: var(--accent-green);
+  opacity: 1;
+}
+
+.stage-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.stage-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: 0.3;
+}
+
+.stage-card.unlocked .stage-number {
+  opacity: 0.8;
+}
+
+.lock-icon, .unlock-icon {
+  color: var(--text-secondary);
+}
+
+.stage-card.unlocked .lock-icon {
+  display: none;
+}
+
+.stage-card.unlocked .unlock-icon {
+  display: block !important;
+  color: var(--accent-teal);
+}
+
+.stage-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.stage-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.key-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.key-input {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(212, 163, 62, 0.2);
+  border-radius: var(--radius-xs);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: 'Space Mono', monospace;
+  transition: var(--transition);
+}
+
+.key-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 163, 62, 0.15);
+}
+
+.key-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.stage-complete-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- STAGE 1: WORD GRID ---------- */
+.word-grid-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.grid-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 2px solid rgba(212, 163, 62, 0.15);
+  border-radius: var(--radius-xs);
+  font-family: 'Space Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.grid-cell.selecting {
+  background: rgba(212, 163, 62, 0.25);
+  border-color: var(--gold);
+  transform: scale(1.08);
+}
+
+.grid-cell.found {
+  background: rgba(78, 203, 113, 0.2);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.grid-cell.wrong {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+#grid-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Word Bank */
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.word-hint {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid rgba(212, 163, 62, 0.15);
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  transition: var(--transition);
+}
+
+.word-hint.found {
+  background: rgba(78, 203, 113, 0.15);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  text-decoration: line-through;
+}
+
+/* ---------- STAGE 2: IMAGE CLUES ---------- */
+.image-clues {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.clue-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  border: 2px solid rgba(212, 163, 62, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.clue-card.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 163, 62, 0.15);
+}
+
+.clue-card.solved {
+  border-color: var(--accent-green);
+}
+
+.clue-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  transition: var(--transition);
+}
+
+.clue-card.active .clue-image {
+  box-shadow: 0 0 16px rgba(212, 163, 62, 0.3);
+}
+
+.clue-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(212, 163, 62, 0.15);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: var(--transition);
+}
+
+.clue-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 163, 62, 0.15);
+}
+
+.clue-input.correct {
+  border-color: var(--accent-green);
+  background: rgba(78, 203, 113, 0.1);
+  color: var(--accent-green);
+}
+
+.clue-input.wrong {
+  animation: shake 0.4s ease;
+  border-color: var(--accent-red);
+}
+
+.clue-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.4;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* ---------- STAGE 3: FLAG DISCOVERY ---------- */
+.scenarios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.scenario-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(212, 163, 62, 0.1);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.scenario-card.solved {
+  border-color: var(--accent-green);
+}
+
+.scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.scenario-header:hover {
+  background: rgba(212, 163, 62, 0.05);
+}
+
+.scenario-header h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scenario-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scenario-badge.open {
+  background: rgba(212, 163, 62, 0.15);
+  color: var(--gold-light);
+}
+
+.scenario-badge.solved {
+  background: rgba(78, 203, 113, 0.15);
+  color: var(--accent-green);
+}
+
+.scenario-body {
+  display: none;
+  padding: 0 16px 16px;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scenario-body.open {
+  display: flex;
+}
+
+.scenario-media {
+  width: 100%;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.scenario-media img {
+  width: 100%;
+  border-radius: var(--radius-xs);
+}
+
+.scenario-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.scenario-desc code {
+  font-family: 'Space Mono', monospace;
+  background: rgba(212, 163, 62, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+}
+
+.flag-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.flag-input {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(212, 163, 62, 0.2);
+  border-radius: var(--radius-xs);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.flag-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 163, 62, 0.15);
+}
+
+.flag-input::placeholder {
+  text-transform: none;
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+
+.flag-input.correct {
+  border-color: var(--accent-green);
+  background: rgba(78, 203, 113, 0.1);
+  color: var(--accent-green);
+}
+
+.flag-input.wrong {
+  animation: shake 0.4s ease;
+  border-color: var(--accent-red);
+}
+
+.btn-submit-flag {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: var(--transition);
+}
+
+.btn-submit-flag:hover {
+  background: #3ad4b0;
+}
+
+/* ---------- END SCREEN ---------- */
+#end-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.end-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.trophy-icon {
+  color: var(--gold);
+  animation: trophy-bounce 2s ease-in-out infinite;
+}
+
+@keyframes trophy-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.congrats-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 2px 16px rgba(212, 163, 62, 0.4);
+}
+
+.congrats-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.social-cta {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-cta p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-btn:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+  transform: translateY(-3px);
+}
+
+/* ---------- Confetti Canvas ---------- */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.35s ease;
+  pointer-events: none;
+  text-align: center;
+  max-width: 90vw;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+}
+
+.toast.error {
+  background: var(--accent-red);
+  color: var(--cream);
+}
+
+.toast.info {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+/* ---------- Unlock Animation ---------- */
+@keyframes unlockBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  60% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+.stage-card.just-unlocked {
+  animation: unlockBounce 0.5s ease;
+}
+
+/* ---------- Responsive: Tablet+ ---------- */
+@media (min-width: 640px) {
+  .screen {
+    padding: 32px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .hero-banner {
+    width: 400px;
+    height: 220px;
+  }
+
+  .game-title {
+    font-size: 2.6rem;
+  }
+
+  .word-grid {
+    max-width: 380px;
+  }
+
+  .grid-cell {
+    font-size: 1.5rem;
+  }
+
+  .image-clues {
+    gap: 20px;
+  }
+}
+
+/* ---------- Score Badge ---------- */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 163, 62, 0.12);
+  border: 1px solid rgba(212, 163, 62, 0.25);
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: var(--gold-light);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.score-badge svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.score-display {
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ---------- Hint Button ---------- */
+.btn-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: rgba(212, 163, 62, 0.12);
+  border: 1px solid rgba(212, 163, 62, 0.3);
+  border-radius: var(--radius-xs);
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-hint:hover:not(:disabled) {
+  background: rgba(212, 163, 62, 0.25);
+  border-color: var(--gold);
+}
+
+.btn-hint:disabled,
+.btn-hint.used {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-hint svg {
+  flex-shrink: 0;
+}
+
+/* Stage 2 hint button sits below the input */
+.clue-card .btn-hint {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Stage 3 hint button sits in the flag input group */
+.flag-input-group .btn-hint {
+  padding: 10px 14px;
+  font-size: 0.78rem;
+}
+
+/* ---------- Scenario Hint Text ---------- */
+.scenario-hint-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  background: rgba(212, 163, 62, 0.08);
+  border: 1px dashed rgba(212, 163, 62, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  margin-top: -4px;
+}
+
+/* ---------- Final Score Card ---------- */
+.final-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-card);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 24px 40px;
+  box-shadow: 0 0 30px rgba(212, 163, 62, 0.2);
+}
+
+.final-score-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.final-score-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(212, 163, 62, 0.4);
+}
+
+.final-score-unit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ---------- Stage 1: Timer ---------- */
+.stage1-timer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  background: var(--bg-card);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.stage1-timer.timer-warning {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  animation: timer-pulse 0.5s ease infinite alternate;
+}
+
+@keyframes timer-pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+/* ---------- Stage 1: Time Overlay ---------- */
+.time-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 16, 35, 0.88);
+  border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+.time-overlay.hidden {
+  display: none !important;
+}
+
+.time-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-red);
+  text-align: center;
+}
+
+.time-overlay-content h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-red);
+}
+
+.btn-retry {
+  padding: 10px 28px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Stage 2: Full-Width Clue Cards ---------- */
+.clue-card-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.clue-card-full .clue-image {
+  max-height: 180px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.clue-question {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ---------- Stage 2: Letter Boxes ---------- */
+.letter-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.letter-box {
+  width: 32px;
+  height: 40px;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(212, 163, 62, 0.2);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  transition: var(--transition);
+  caret-color: var(--gold);
+}
+
+.letter-box:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 163, 62, 0.15);
+  outline: none;
+}
+
+.letter-box.correct {
+  border-color: var(--accent-green);
+  background: rgba(78, 203, 113, 0.1);
+  color: var(--accent-green);
+}
+
+.letter-box.wrong {
+  animation: shake 0.4s ease;
+  border-color: var(--accent-red);
+}
+
+/* ---------- Stage 2: Clue Hint Text ---------- */
+.clue-hint-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  background: rgba(212, 163, 62, 0.08);
+  border: 1px dashed rgba(212, 163, 62, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.clue-hint-text.hidden {
+  display: none;
+}
+
+/* ---------- Stage 2: Solved Badge ---------- */
+.clue-solved-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(78, 203, 113, 0.15);
+  color: var(--accent-green);
+}
+
+.clue-solved-badge.hidden {
+  display: none;
+}
