@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Ramadan Treasure</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<head>
+  <meta property="og:title" content="Ramadan Treasure" />
+  <meta property="og:description" content="Interactive programming challenges" />
+  <meta property="og:image" content="link-to-your-image.png" />
+  ...
+</head>
+<body>
+  <!-- ========== HOME SCREEN ========== -->
+  <div id="home-screen" class="screen active">
+    <div class="decorations">
+      <div class="lantern lantern-1"></div>
+      <div class="lantern lantern-2"></div>
+      <div class="lantern lantern-3"></div>
+      <div class="stars-bg"></div>
+    </div>
+    <div class="home-content">
+      <div class="crescent-moon"></div>
+      <img src="images/Full.png" alt="Ramadan Code Quest Banner" class="hero-banner">
+      <h1 class="game-title">Ramadan Treasure🌙🔐</h1>
+      <p class="game-subtitle">PPU CODE ACADEMY Challenge</p>
+      <p class="game-desc">Unlock stages, solve puzzles, and conquer the code!</p>
+      <button id="start-btn" class="btn btn-primary btn-glow">
+        <span>Start Game</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="geometric-border"></div>
+  </div>
+
+  <!-- ========== MAP SCREEN ========== -->
+  <div id="map-screen" class="screen">
+    <div class="screen-header">
+      <button class="back-btn" data-target="home-screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <h2>Challenge Map</h2>
+      <div class="score-badge" aria-label="Total Score">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="score-display">0</span>
+      </div>
+      <button id="mute-btn" class="icon-btn" aria-label="Toggle sound">
+        <svg class="sound-on" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg class="sound-off hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+    </div>
+
+    <div class="map-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="overall-progress"></div>
+      </div>
+      <span class="progress-text" id="progress-text">0 / 3 Stages Complete</span>
+    </div>
+
+    <div class="stage-cards" id="stage-cards">
+      <!-- Stage 1 Card -->
+      <div class="stage-card locked" data-stage="1">
+        <div class="stage-card-header">
+          <span class="stage-number">01</span>
+          <div class="lock-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="unlock-icon hidden">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          </div>
+        </div>
+        <h3>Word Grid</h3>
+        <p>Swipe across letters to find hidden programming words</p>
+        <div class="key-input-group">
+          <input type="text" class="key-input" placeholder="Enter stage key..." maxlength="20" data-stage="1">
+          <button class="btn btn-unlock" data-stage="1">Unlock</button>
+        </div>
+        <button class="btn btn-play hidden" data-stage="1">Play Stage</button>
+        <div class="stage-complete-badge hidden">Completed!</div>
+      </div>
+
+      <!-- Stage 2 Card -->
+      <div class="stage-card locked" data-stage="2">
+        <div class="stage-card-header">
+          <span class="stage-number">02</span>
+          <div class="lock-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="unlock-icon hidden">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          </div>
+        </div>
+        <h3>Image Clues</h3>
+        <p>Identify the word behind each image clue</p>
+        <div class="key-input-group">
+          <input type="text" class="key-input" placeholder="Enter stage key..." maxlength="20" data-stage="2">
+          <button class="btn btn-unlock" data-stage="2">Unlock</button>
+        </div>
+        <button class="btn btn-play hidden" data-stage="2">Play Stage</button>
+        <div class="stage-complete-badge hidden">Completed!</div>
+      </div>
+
+      <!-- Stage 3 Card -->
+      <div class="stage-card locked" data-stage="3">
+        <div class="stage-card-header">
+          <span class="stage-number">03</span>
+          <div class="lock-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="unlock-icon hidden">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          </div>
+        </div>
+        <h3>Flag Discovery</h3>
+        <p>Solve scenarios and capture the hidden flags</p>
+        <div class="key-input-group">
+          <input type="text" class="key-input" placeholder="Enter stage key..." maxlength="20" data-stage="3">
+          <button class="btn btn-unlock" data-stage="3">Unlock</button>
+        </div>
+        <button class="btn btn-play hidden" data-stage="3">Play Stage</button>
+        <div class="stage-complete-badge hidden">Completed!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== STAGE 1: WORD GRID ========== -->
+  <div id="stage1-screen" class="screen">
+    <div class="screen-header">
+      <button class="back-btn" data-target="map-screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <h2>Word Grid</h2>
+      <div class="score-badge" aria-label="Total Score">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="score-display">0</span>
+      </div>
+      <span class="stage-progress" id="stage1-progress">0 / 5</span>
+      <span class="stage1-timer" id="stage1-timer">10</span>
+    </div>
+    <p class="stage-instruction">Swipe across letters to find hidden words!</p>
+    <div class="word-grid-wrapper">
+      <div class="word-grid" id="word-grid">
+        <!-- Grid cells generated by JS -->
+      </div>
+      <canvas id="grid-canvas"></canvas>
+      <!-- Time's up overlay -->
+      <div class="time-overlay hidden" id="stage1-time-overlay">
+        <div class="time-overlay-content">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Time's Up!</h3>
+          <button class="btn btn-primary btn-retry" id="stage1-retry-btn">Retry</button>
+        </div>
+      </div>
+    </div>
+    <div class="word-bank" id="word-bank">
+      <!-- Word hints generated by JS -->
+    </div>
+  </div>
+
+  <!-- ========== STAGE 2: IMAGE CLUES ========== -->
+  <div id="stage2-screen" class="screen">
+    <div class="screen-header">
+      <button class="back-btn" data-target="map-screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <h2>Image Clues</h2>
+      <div class="score-badge" aria-label="Total Score">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="score-display">0</span>
+      </div>
+      <span class="stage-progress" id="stage2-progress">0 / 3</span>
+    </div>
+    <p class="stage-instruction"></p>
+    <div class="image-clues" id="image-clues">
+      <!-- Image clue cards generated by JS -->
+    </div>
+  </div>
+
+  <!-- ========== STAGE 3: FLAG DISCOVERY ========== -->
+  <div id="stage3-screen" class="screen">
+    <div class="screen-header">
+      <button class="back-btn" data-target="map-screen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <h2>Flag Discovery</h2>
+      <div class="score-badge" aria-label="Total Score">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="score-display">0</span>
+      </div>
+      <span class="stage-progress" id="stage3-progress">0 / 3</span>
+    </div>
+    <p class="stage-instruction">Investigate each scenario and find the hidden flag!</p>
+    <div class="scenarios" id="scenarios">
+      <!-- Scenario cards generated by JS -->
+    </div>
+  </div>
+
+  <!-- ========== END SCREEN ========== -->
+  <div id="end-screen" class="screen">
+    <div class="decorations">
+      <div class="lantern lantern-1"></div>
+      <div class="lantern lantern-2"></div>
+      <div class="lantern lantern-3"></div>
+    </div>
+    <div class="end-content">
+      <div class="trophy-icon">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      </div>
+      <h1 class="congrats-title">Congratulations!</h1>
+      <p class="congrats-text">You have conquered all three challenges of Ramadan Treasure!</p>
+      <div class="final-score-card">
+        <span class="final-score-label">Final Score</span>
+        <span class="final-score-value" id="final-score">0</span>
+        <span class="final-score-unit">points</span>
+      </div>
+      <div class="social-cta">
+        <p>Follow us for more updates and challenges:</p>
+        <div class="social-links">
+          
+         <a href="https://www.facebook.com/PPUCC" class="social-btn" aria-label="Facebook" target="_blank">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.5V12H17l-.4 3h-2.7v7A10 10 0 0 0 22 12z"/>
+  </svg>
+  </svg>
+</a>
+          <a href="https://www.instagram.com/ppu_code_academy/" class="social-btn" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/ppu-code-academy/" class="social-btn" aria-label="linkedin">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.447 20.452H16.9v-5.569c0-1.328-.027-3.037-1.849-3.037-1.851 0-2.135 1.445-2.135 2.939v5.667H9.37V9h3.406v1.561h.049c.475-.9 1.637-1.849 3.369-1.849 3.601 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.556V9h3.563v11.452z"/>
+  </svg>
+          </a>
+        </div>
+      </div>
+      <button id="replay-btn" class="btn btn-primary">Play Again</button>
+    </div>
+  </div>
+
+  <!-- ========== CONFETTI CANVAS ========== -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========== FEEDBACK TOAST ========== -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
